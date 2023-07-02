@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: laboratoriodb
+data:
+  host: postgres
+  name: laboratorio

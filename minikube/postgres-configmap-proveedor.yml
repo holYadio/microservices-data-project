@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: proveedordb
+data:
+  host: postgres
+  name: proveedor

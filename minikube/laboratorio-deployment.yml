@@ -1,0 +1,56 @@
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laboratorio-deployment
+  labels:
+    app: laboratorio-deployment
+spec:
+  selector:
+    matchLabels:
+      app: laboratorio-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: laboratorio-deployment
+    spec:
+      containers:
+      - name: laboratorio
+        image: holyadio/kubernetes-laboratorio:latest
+        ports:
+        - containerPort: 8084
+        env:
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: http://config-server:8081
+          - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+            value: http://eureka-service:8761
+          - name: eureka.instance.preferIpAddress
+            value: "true"
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: laboratoriodb
+                key: host
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: laboratoriodb
+                key: name
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: laboratorio-service
+  labels:
+    app: laboratorio-service
+spec:
+  selector:
+    app: laboratorio-deployment
+  ports:
+    - protocol: TCP
+      port: 8084
+      targetPort: 8084
+  type: LoadBalancer

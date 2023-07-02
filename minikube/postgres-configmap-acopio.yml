@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: acopiodb
+data:
+  host: postgres
+  name: acopio
