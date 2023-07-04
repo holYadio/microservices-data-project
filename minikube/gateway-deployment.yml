@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: holyadio/kubernetes-gateway:latest
+          image: holyadio/kubernetes-gateway
           ports:
             - containerPort: 8081
           env:

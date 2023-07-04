@@ -99,4 +99,3 @@ spec:
       - name: postgres-persistent-storage
         persistentVolumeClaim:
           claimName: postgres-pv-claim
-```
