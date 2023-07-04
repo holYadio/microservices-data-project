@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: config
-          image: holyadio/kubernete-configservice:latest
+          image: holyadio/kubernetes-configservice:latest
           ports:
             - containerPort: 8081
 
