@@ -15,8 +15,8 @@ spec:
         app: config-deployment
     spec:
       containers:
-        - name: config
-          image: holyadio/kubernete-configservice:latest
+        - name: configservice
+          image: holyadio/kubernetes-configservice
           ports:
             - containerPort: 8081
 
